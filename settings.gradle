@@ -3,6 +3,12 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url "https://jitpack.io"
+            credentials {
+                username authToken
+            }
+        }
     }
 }
 rootProject.name = "net"

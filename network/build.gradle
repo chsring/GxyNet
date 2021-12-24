@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
 }
 apply from: rootProject.file('BuildConfig.gradle')
 android {
@@ -43,13 +44,15 @@ dependencies {
     api 'com.trello.rxlifecycle4:rxlifecycle-components:4.0.2'
 
 }
-
-allprojects {
-    plugins.withId("com.vanniktech.maven.publish") {
-        mavenPublish {
-            sonatypeHost = "S01"
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.srwing'
+                artifactId = 'network'
+                version = '1.0.0'
+            }
         }
     }
 }
-
-apply plugin: "com.vanniktech.maven.publish"
