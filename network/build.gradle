@@ -1,7 +1,8 @@
 plugins {
     id 'com.android.library'
 }
-
+apply plugin: 'maven-publish' // 增加
+group='com.github.chsring'
 apply from: rootProject.file('BuildConfig.gradle')
 android {
     compileSdkVersion project.ext.compileSdkVer
@@ -27,7 +28,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-
 dependencies {
 
 //    implementation project(':base')
