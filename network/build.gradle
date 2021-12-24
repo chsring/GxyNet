@@ -1,0 +1,47 @@
+plugins {
+    id 'com.android.library'
+}
+
+apply from: rootProject.file('BuildConfig.gradle')
+android {
+    compileSdkVersion project.ext.compileSdkVer
+    buildToolsVersion project.ext.buildToolsVer
+
+    defaultConfig {
+        minSdkVersion project.ext.minSdkVer
+        targetSdkVersion project.ext.targetSdkVer
+        versionCode project.ext.versionCode
+        versionName project.ext.versionName
+
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+//    implementation project(':base')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.orhanobut:logger:2.2.0'
+
+    api 'com.squareup.retrofit2:retrofit:2.9.0'
+    api 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+    api 'com.squareup.retrofit2:converter-gson:2.9.0'
+    api 'com.squareup.okhttp3:okhttp:3.12.0'
+
+    api 'com.trello.rxlifecycle4:rxlifecycle:4.0.2'
+    api 'com.trello.rxlifecycle4:rxlifecycle-android:4.0.2'
+    api 'com.trello.rxlifecycle4:rxlifecycle-components:4.0.2'
+
+}
