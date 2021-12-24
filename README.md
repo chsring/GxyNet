@@ -14,7 +14,7 @@ app下build.gradle
 
  ```java
 	dependencies {
-	        implementation 'com.github.chsring:bynet:Tag'
+	        implementation 'com.github.chsring:bynet:v1.0.5'
 	}
 ```
 
