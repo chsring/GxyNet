@@ -1,16 +1,17 @@
 plugins {
     id 'com.android.application'
 }
+apply from: rootProject.file('BuildConfig.gradle')
 
 android {
-    compileSdk 30
+    compileSdkVersion project.ext.compileSdkVer
+    buildToolsVersion project.ext.buildToolsVer
 
     defaultConfig {
-        applicationId "com.srwing.net"
-        minSdk 23
-        targetSdk 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion project.ext.minSdkVer
+        targetSdkVersion project.ext.targetSdkVer
+        versionCode project.ext.versionCode
+        versionName project.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
