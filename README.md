@@ -14,7 +14,7 @@ app下build.gradle
 
  ```groovy
 	dependencies {
-	        implementation 'com.github.chsring:bynet:v1.1.2'
+	        implementation 'com.github.chsring:GxyNet:v1.1.2'
 	}
 ```
 
