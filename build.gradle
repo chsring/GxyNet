@@ -1,17 +1,33 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    def dir = new File("config")
-    dir.deleteDir()
+//    def dir = new File("config")
+//    dir.deleteDir()
     println("gradle deal git clone conifg")
     def rmUpdate = "git clone -b master https://github.com/chsring/config.git"
     def procUp = rmUpdate.execute()
     procUp.waitFor()
     repositories {
         google()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url 'https://developer.huawei.com/repo/' }
         mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/releases' }
+
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.4"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url 'https://developer.huawei.com/repo/' }
+        mavenCentral()
+        maven { url 'https://maven.aliyun.com/repository/releases' }
     }
 }
 

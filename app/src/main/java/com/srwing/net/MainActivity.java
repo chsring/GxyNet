@@ -27,9 +27,6 @@ public class MainActivity extends AppCompatActivity {
         map.put("page", 1);
         map.put("size", 15);
 
-        Handler handler = new Handler(new Handler.Callback() {
-            @Override
-            public boolean handleMessage(@NonNull Message msg) {
                 GxyNet.builder()
                         .params(map)
                         .service(MainService.class)
@@ -48,10 +45,5 @@ public class MainActivity extends AppCompatActivity {
                         })
                         .build()
                         .excute();
-                return true;
-            }
-        });
-
-        handler.sendEmptyMessage(1);
     }
 }
