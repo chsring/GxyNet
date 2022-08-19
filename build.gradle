@@ -1,11 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    def dir = new File("config")
-    dir.deleteDir()
-    println("gradle deal git clone conifg")
-    def rmUpdate = "git clone -b master https://github.com/chsring/config.git"
-    def procUp = rmUpdate.execute()
-    procUp.waitFor()
+//    def dir = new File("config")
+//    dir.deleteDir()
+//    println("gradle deal git clone conifg")
+//    def rmUpdate = "git clone -b master https://github.com/chsring/config.git"
+//    def procUp = rmUpdate.execute()
+//    procUp.waitFor()
     repositories {
         google()
         mavenCentral()
