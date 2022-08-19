@@ -21,20 +21,13 @@ app下build.gradle
 Application中 初始化配置
 ```java
     private void initNetConfig() {
-        Configurator configurator = GxyNet.init(mApp)  //初始化
-                .withApiHost(UrlConstant.URL_BASE);  //设置网络请求 同理的 Domain
-        if (BuildConfig.DEBUG) {
-            configurator.withInterceptor(new ByInterceptor()); //设置请求日志解析拦截器
-            configurator.withInterceptor(new ErrorLogInterceptor()); //设置请求错误处理拦截器
-        }
-        configurator.withInterceptor(new LogInterceptor());
-        configurator.withRespFilter(new ResponseFilter()); //设置网络请求返回值 解析Filter
-        configurator.withToken(UserManager.get().getToken()); //这只全局请求token
-        configurator.withNetGlobleParams(ApnInit.getHeads());   //这只全局请求参数
-        configurator.withLoggerAdapter();  //设置LogAdapter
-        configurator.withDebugMode(BuildConfig.DEBUG);  //设置是否打印请求 日志
-        configurator.withNoProxy(false);
-        configurator.configure();  //配置生效
+        GxyNet.init(this)
+        .withApiHost("https://server6.19x19.com/")
+        .withInterceptor(new LogInterceptor())
+        .withLoggerAdapter() //设置LogAdapter
+        .withDebugMode(true) //设置是否打印请求 日志
+        .withNoProxy(false)
+        .configure(); //配置生效
 
     }
  ```
