@@ -1,4 +1,4 @@
-# bynet
+# GxyNet
 项目的build.gradle
 
  ```groovy
@@ -14,7 +14,7 @@ app下build.gradle
 
  ```groovy
 	dependencies {
-	        implementation 'com.github.chsring:bynet:v1.0.5'
+	        implementation 'com.github.chsring:bynet:v1.1.0'
 	}
 ```
 
