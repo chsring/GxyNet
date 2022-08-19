@@ -1,18 +1,18 @@
 plugins {
     id 'com.android.application'
 }
-apply from: rootProject.file('BuildConfig.gradle')
 
+apply from: rootProject.file('BuildConfig.gradle')
+apply from: "$rootDir/config/versions.gradle"
+apply from: "$rootDir/config/forces.gradle"
 android {
-    compileSdkVersion project.ext.compileSdkVer
-    buildToolsVersion project.ext.buildToolsVer
+    compileSdk buildVersions.compileSdk
 
     defaultConfig {
-        minSdkVersion project.ext.minSdkVer
-        targetSdkVersion project.ext.targetSdkVer
-        versionCode project.ext.versionCode
-        versionName project.ext.versionName
-
+        minSdkVersion buildVersions.minSdk
+        targetSdkVersion buildVersions.targetSdk
+        versionCode appVersions.versionCode
+        versionName appVersions.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -23,8 +23,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility jdkVersion.sourceCompatibility
+        targetCompatibility jdkVersion.targetCompatibility
     }
 }
 

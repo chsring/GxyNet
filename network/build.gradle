@@ -2,14 +2,16 @@ plugins {
     id 'com.android.library'
     id 'maven-publish'
 }
+
+apply from: "$rootDir/config/versions.gradle"
+apply from: "$rootDir/config/forces.gradle"
 apply from: rootProject.file('BuildConfig.gradle')
 android {
-    compileSdkVersion project.ext.compileSdkVer
-    buildToolsVersion project.ext.buildToolsVer
+    compileSdk buildVersions.compileSdk
 
     defaultConfig {
-        minSdkVersion project.ext.minSdkVer
-        targetSdkVersion project.ext.targetSdkVer
+        minSdk buildVersions.minSdk
+        targetSdk buildVersions.targetSdk
         versionCode project.ext.versionCode
         versionName project.ext.versionName
 
@@ -23,25 +25,32 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility jdkVersion.sourceCompatibility
+        targetCompatibility jdkVersion.targetCompatibility
     }
 }
 dependencies {
 
 //    implementation project(':base')
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'com.orhanobut:logger:2.2.0'
+    api deps.retrofit.retrofit
+    api deps.retrofit.converter
+    api deps.retrofit.adapter
+    api deps.okhttp.okhttp
 
-    api 'com.squareup.retrofit2:retrofit:2.9.0'
-    api 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
-    api 'com.squareup.retrofit2:converter-gson:2.9.0'
-    api 'com.squareup.okhttp3:okhttp:3.12.0'
+    api deps.trello.rxlifecycle
+    api deps.trello.rxlifecycle_components
+    api deps.trello.rxlifecycle_android
 
-    api 'com.trello.rxlifecycle4:rxlifecycle:4.0.2'
-    api 'com.trello.rxlifecycle4:rxlifecycle-android:4.0.2'
-    api 'com.trello.rxlifecycle4:rxlifecycle-components:4.0.2'
+
+    api deps.logger
+    //AndroidUtil
+    api deps.blankj
+    api deps.google.gson
+    api deps.trello.rxlifecycle
+    api deps.support.constraint_layout
+
+    api deps.rxjava.rxjava
+    api deps.rxjava.rxandroid
 
 }
 afterEvaluate {
@@ -51,7 +60,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.srwing'
                 artifactId = 'network'
-                version = '1.0.0'
+                version = '1.1.0'
             }
         }
     }

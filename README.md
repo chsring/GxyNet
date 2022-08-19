@@ -1,10 +1,10 @@
 # bynet
 项目的build.gradle
 
- ```java
+ ```groovy
   allprojects {
 		  repositories {
-			  ...
+			  //...
 			  maven { url 'https://jitpack.io' }
 		  }
 	}
@@ -12,7 +12,7 @@
   
 app下build.gradle
 
- ```java
+ ```groovy
 	dependencies {
 	        implementation 'com.github.chsring:bynet:v1.0.5'
 	}
@@ -21,16 +21,14 @@ app下build.gradle
 Application中 初始化配置
 ```java
     private void initNetConfig() {
-
-        Configurator configurator = ByNet.init(mApp)  //初始化
+        Configurator configurator = GxyNet.init(mApp)  //初始化
                 .withApiHost(UrlConstant.URL_BASE);  //设置网络请求 同理的 Domain
         if (BuildConfig.DEBUG) {
             configurator.withInterceptor(new ByInterceptor()); //设置请求日志解析拦截器
             configurator.withInterceptor(new ErrorLogInterceptor()); //设置请求错误处理拦截器
         }
         configurator.withInterceptor(new LogInterceptor());
-        configurator.withRespFilter(new FyResponseFilter()); //设置网络请求返回值 解析Filter
-        configurator.withRespFilter(new UpgradeFilter());  //强制升级 filter
+        configurator.withRespFilter(new ResponseFilter()); //设置网络请求返回值 解析Filter
         configurator.withToken(UserManager.get().getToken()); //这只全局请求token
         configurator.withNetGlobleParams(ApnInit.getHeads());   //这只全局请求参数
         configurator.withLoggerAdapter();  //设置LogAdapter
@@ -60,7 +58,7 @@ public interface DanCiService {
 
  2. 发起请求
  ```java
-         ByNet.builder()
+         GxyNet.builder()
                 .service(DanCiService.class)
                 .params(DanCiListActivity.CIXING_TYPE,ciXing)
                 .method((IMethod<DanCiService>) DanCiService::getDanCi)
