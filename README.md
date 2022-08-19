@@ -22,7 +22,7 @@ Application中 初始化配置
 ```java
     private void initNetConfig() {
         GxyNet.init(this)
-        .withApiHost("https://server6.19x19.com/")
+        .withApiHost(BaseUrl)
         .withInterceptor(new LogInterceptor())
         .withLoggerAdapter() //设置LogAdapter
         .withDebugMode(true) //设置是否打印请求 日志
